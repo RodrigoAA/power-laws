@@ -97,8 +97,9 @@ export default async function LawPage({ params }: LawPageProps) {
         </header>
 
         {/* Main content */}
-        <article className="animate-fade-in-up animate-delay-300">
-          <div className="relative rounded-lg border border-[#2a2a2a] bg-[#141414] p-8 md:p-12 overflow-hidden">
+        <article className="space-y-8">
+          {/* La Ley */}
+          <div className="relative rounded-lg border border-[#2a2a2a] bg-[#141414] p-8 md:p-12 overflow-hidden animate-fade-in-up animate-delay-300">
             {/* Decorative corner */}
             <div className="absolute top-0 right-0 w-32 h-32">
               <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-[#d4af37]/10 to-transparent" />
@@ -111,25 +112,78 @@ export default async function LawPage({ params }: LawPageProps) {
             <p className="text-lg md:text-xl text-[#f5f5f0] leading-relaxed">
               {law.description}
             </p>
+          </div>
 
-            {/* Decorative separator */}
-            <div className="flex items-center gap-4 my-10">
-              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#2a2a2a]" />
+          {/* Historical Example */}
+          <div className="relative rounded-lg border border-[#2a2a2a] bg-[#141414] p-8 md:p-12 overflow-hidden animate-fade-in-up animate-delay-400">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-10 rounded-full bg-amber-500/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                </svg>
+              </div>
+              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-amber-400">
+                Ejemplo Histórico
+              </h2>
+            </div>
+
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-[#f5f5f0] mb-6">
+              {law.historicalExample.title}
+            </h3>
+
+            <p className="text-[#a3a3a3] leading-relaxed text-lg">
+              {law.historicalExample.story}
+            </p>
+          </div>
+
+          {/* Modern Application */}
+          <div className="relative rounded-lg border border-[#2a2a2a] bg-[#141414] p-8 md:p-12 overflow-hidden animate-fade-in-up animate-delay-500">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+              </div>
+              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-blue-400">
+                Aplicación Moderna
+              </h2>
+            </div>
+
+            <p className="text-[#f5f5f0] leading-relaxed text-lg">
+              {law.modernApplication}
+            </p>
+          </div>
+
+          {/* Reversal */}
+          <div className="relative rounded-lg border border-[#2a2a2a] bg-[#0a0a0a] p-8 md:p-12 overflow-hidden animate-fade-in-up animate-delay-600">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-10 rounded-full bg-rose-500/10 flex items-center justify-center">
+                <svg className="w-5 h-5 text-rose-400" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+              </div>
+              <h2 className="font-display text-sm uppercase tracking-[0.2em] text-rose-400">
+                La Reversa
+              </h2>
+            </div>
+
+            <p className="text-[#a3a3a3] leading-relaxed text-lg italic">
+              {law.reversal}
+            </p>
+          </div>
+
+          {/* Key insight */}
+          <div className="bg-[#141414] rounded-lg p-8 border border-[#d4af37]/20 animate-fade-in-up animate-delay-700">
+            <div className="flex items-center gap-4 my-6">
+              <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/30" />
               <svg className="w-6 h-6 text-[#d4af37]" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
               </svg>
-              <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#2a2a2a]" />
+              <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/30" />
             </div>
-
-            {/* Key insight */}
-            <div className="bg-[#0a0a0a] rounded-lg p-6 border border-[#2a2a2a]">
-              <h3 className="font-display text-sm uppercase tracking-[0.2em] text-[#6b6b6b] mb-3">
-                Reflexión Clave
-              </h3>
-              <p className="text-[#a3a3a3] italic">
-                El dominio de esta ley requiere práctica constante y una observación aguda de las dinámicas de poder en cada interacción.
-              </p>
-            </div>
+            <p className="text-center text-[#d4af37] italic text-lg">
+              El dominio de esta ley requiere práctica constante y una observación aguda de las dinámicas de poder en cada interacción.
+            </p>
           </div>
         </article>
 
