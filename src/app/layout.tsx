@@ -1,13 +1,20 @@
 import type { Metadata } from 'next'
-import { IBM_Plex_Sans } from 'next/font/google'
+import { Playfair_Display, Crimson_Pro } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 
-const ibmPlexSans = IBM_Plex_Sans({
-  weight: ['400', '500', '600', '700'],
+const playfair = Playfair_Display({
+  weight: ['400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
-  variable: '--font-ibm-plex-sans',
+  variable: '--font-playfair',
+  display: 'swap',
+})
+
+const crimson = Crimson_Pro({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-crimson',
   display: 'swap',
 })
 
@@ -33,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" className={ibmPlexSans.variable}>
-      <body className="antialiased flex min-h-screen flex-col">
+    <html lang="es" className={`${playfair.variable} ${crimson.variable}`}>
+      <body className="antialiased flex min-h-screen flex-col bg-[#0a0a0a] text-[#f5f5f0]">
         <Header />
         <main id="main-content" className="flex-1">
           {children}

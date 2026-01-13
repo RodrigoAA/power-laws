@@ -1,51 +1,78 @@
 import Link from 'next/link'
-import { Law, categoryLabels, categoryColors } from '@/data/laws'
+import { Law, categoryLabels } from '@/data/laws'
 
 interface LawCardProps {
   law: Law
+  index: number
 }
 
-export function LawCard({ law }: LawCardProps) {
-  const colors = categoryColors[law.category]
+const categoryStyles: Record<Law['category'], string> = {
+  reputation: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  strategy: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  deception: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  relationships: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  timing: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+  'self-mastery': 'bg-slate-400/10 text-slate-300 border-slate-500/20'
+}
+
+export function LawCard({ law, index }: LawCardProps) {
+  const animationDelay = (index % 12) * 50
 
   return (
     <Link
       href={`/ley/${law.number}`}
       className="group block"
+      style={{ animationDelay: `${animationDelay}ms` }}
     >
-      <article className="relative h-full bg-white rounded-xl shadow-sm border border-gray-200 p-6 transition-all duration-300 hover:shadow-lg hover:border-gray-300 hover:-translate-y-1">
-        {/* Number badge */}
-        <div className="absolute -top-3 -left-3 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold text-sm shadow-md">
-          {law.number}
+      <article className="relative h-full overflow-hidden rounded-lg border border-[#2a2a2a] bg-[#141414] p-6 transition-all duration-500 hover:border-[#d4af37]/30 hover:bg-[#1a1a1a] animate-fade-in-up">
+        {/* Decorative corner accent */}
+        <div className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-[#d4af37]/10 to-transparent" />
         </div>
 
-        {/* Category badge */}
-        <div className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.bg} ${colors.text} ${colors.border} border mb-3`}>
-          {categoryLabels[law.category]}
+        {/* Number - large decorative */}
+        <div className="absolute -top-2 -right-2 font-display text-8xl font-black text-[#1a1a1a] group-hover:text-[#222] transition-colors duration-500 select-none">
+          {law.number.toString().padStart(2, '0')}
         </div>
 
-        {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-amber-600 transition-colors line-clamp-2">
-          {law.title}
-        </h3>
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Law number badge */}
+          <div className="inline-flex items-center gap-2 mb-4">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-sm">
+              {law.number}
+            </span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
+              {categoryLabels[law.category]}
+            </span>
+          </div>
 
-        {/* Subtitle */}
-        <p className="text-sm text-gray-500 italic mb-3 line-clamp-2">
-          "{law.subtitle}"
-        </p>
+          {/* Title */}
+          <h3 className="font-display text-xl font-semibold text-[#f5f5f0] mb-3 leading-tight group-hover:text-[#d4af37] transition-colors duration-300">
+            {law.title}
+          </h3>
 
-        {/* Description preview */}
-        <p className="text-sm text-gray-600 line-clamp-3">
-          {law.description}
-        </p>
+          {/* Subtitle quote */}
+          <p className="text-sm text-[#6b6b6b] italic mb-4 line-clamp-2 border-l-2 border-[#d4af37]/30 pl-3">
+            "{law.subtitle}"
+          </p>
 
-        {/* Read more indicator */}
-        <div className="mt-4 flex items-center text-sm font-medium text-amber-600 opacity-0 group-hover:opacity-100 transition-opacity">
-          Leer más
-          <svg className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
+          {/* Description */}
+          <p className="text-sm text-[#a3a3a3] line-clamp-3 leading-relaxed">
+            {law.description}
+          </p>
+
+          {/* Read more */}
+          <div className="mt-5 flex items-center gap-2 text-sm font-medium text-[#d4af37] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
+            <span>Explorar ley</span>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
         </div>
+
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </article>
     </Link>
   )
