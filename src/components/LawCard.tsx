@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Law, categoryLabels } from '@/data/laws'
+import { LawIllustration } from './LawIllustration'
 
 interface LawCardProps {
   law: Law
@@ -24,46 +25,37 @@ export function LawCard({ law, index }: LawCardProps) {
       className="group block"
       style={{ animationDelay: `${animationDelay}ms` }}
     >
-      <article className="relative h-full overflow-hidden rounded-lg border border-[#2a2a2a] bg-[#141414] p-6 transition-all duration-500 hover:border-[#d4af37]/30 hover:bg-[#1a1a1a] animate-fade-in-up">
-        {/* Decorative corner accent */}
-        <div className="absolute top-0 right-0 w-20 h-20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-[#d4af37]/10 to-transparent" />
-        </div>
-
-        {/* Number - large decorative */}
-        <div className="absolute -top-2 -right-2 font-display text-8xl font-black text-[#1a1a1a] group-hover:text-[#222] transition-colors duration-500 select-none">
-          {law.number.toString().padStart(2, '0')}
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10">
-          {/* Law number badge */}
-          <div className="inline-flex items-center gap-2 mb-4">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-sm">
+      <article className="relative h-full overflow-hidden rounded-lg border border-[#2a2a2a] bg-[#141414] transition-all duration-500 hover:border-[#d4af37]/30 hover:bg-[#1a1a1a] animate-fade-in-up">
+        {/* Illustration */}
+        <div className="relative overflow-hidden">
+          <LawIllustration lawNumber={law.number} className="w-full h-40 transition-transform duration-500 group-hover:scale-105" />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#141414] to-transparent opacity-60" />
+          {/* Law number badge - positioned over illustration */}
+          <div className="absolute top-3 left-3 flex items-center gap-2">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-sm shadow-lg">
               {law.number}
             </span>
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium border backdrop-blur-sm ${categoryStyles[law.category]}`}>
               {categoryLabels[law.category]}
             </span>
           </div>
+        </div>
 
+        {/* Content */}
+        <div className="relative z-10 p-5">
           {/* Title */}
-          <h3 className="font-display text-xl font-semibold text-[#f5f5f0] mb-3 leading-tight group-hover:text-[#d4af37] transition-colors duration-300">
+          <h3 className="font-display text-lg font-semibold text-[#f5f5f0] mb-2 leading-tight group-hover:text-[#d4af37] transition-colors duration-300">
             {law.title}
           </h3>
 
           {/* Subtitle quote */}
-          <p className="text-sm text-[#6b6b6b] italic mb-4 line-clamp-2 border-l-2 border-[#d4af37]/30 pl-3">
-            "{law.subtitle}"
-          </p>
-
-          {/* Description */}
-          <p className="text-sm text-[#a3a3a3] line-clamp-3 leading-relaxed">
-            {law.description}
+          <p className="text-sm text-[#6b6b6b] italic mb-3 line-clamp-2 border-l-2 border-[#d4af37]/30 pl-3">
+            &quot;{law.subtitle}&quot;
           </p>
 
           {/* Read more */}
-          <div className="mt-5 flex items-center gap-2 text-sm font-medium text-[#d4af37] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
+          <div className="flex items-center gap-2 text-sm font-medium text-[#d4af37] opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-0 group-hover:translate-x-1">
             <span>Explorar ley</span>
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

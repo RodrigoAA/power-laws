@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { laws, categoryLabels } from '@/data/laws'
+import { LawIllustration } from '@/components/LawIllustration'
 
 interface LawPageProps {
   params: Promise<{ number: string }>
@@ -68,18 +69,26 @@ export default async function LawPage({ params }: LawPageProps) {
 
         {/* Law header */}
         <header className="mb-12 animate-fade-in-up">
-          {/* Large decorative number */}
-          <div className="relative mb-8">
-            <span className="font-display text-[12rem] md:text-[16rem] font-black text-[#141414] leading-none select-none">
-              {law.number.toString().padStart(2, '0')}
-            </span>
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 flex items-center gap-4">
-              <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-2xl shadow-lg shadow-[#d4af37]/20">
-                {law.number}
-              </span>
-              <span className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
-                {categoryLabels[law.category]}
-              </span>
+          {/* Illustration and number */}
+          <div className="flex flex-col md:flex-row gap-8 mb-8">
+            {/* Illustration */}
+            <div className="w-full md:w-64 flex-shrink-0">
+              <LawIllustration lawNumber={law.number} className="w-full h-64 md:h-64 rounded-lg shadow-2xl shadow-[#d4af37]/10" />
+            </div>
+
+            {/* Number and badges */}
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-2xl shadow-lg shadow-[#d4af37]/20">
+                  {law.number}
+                </span>
+                <span className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
+                  {categoryLabels[law.category]}
+                </span>
+              </div>
+              <p className="text-sm text-[#6b6b6b] uppercase tracking-widest">
+                Ley {law.number} de 48
+              </p>
             </div>
           </div>
 
@@ -91,7 +100,7 @@ export default async function LawPage({ params }: LawPageProps) {
           {/* Subtitle */}
           <div className="relative pl-6 border-l-2 border-[#d4af37] animate-fade-in-up animate-delay-200">
             <p className="text-xl md:text-2xl text-[#a3a3a3] italic leading-relaxed">
-              "{law.subtitle}"
+              &quot;{law.subtitle}&quot;
             </p>
           </div>
         </header>
