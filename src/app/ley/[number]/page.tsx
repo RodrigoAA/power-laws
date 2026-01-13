@@ -69,37 +69,29 @@ export default async function LawPage({ params }: LawPageProps) {
 
         {/* Law header */}
         <header className="mb-12 animate-fade-in-up">
-          {/* Illustration and number */}
-          <div className="flex flex-col md:flex-row gap-8 mb-8">
-            {/* Illustration */}
-            <div className="w-full md:w-64 flex-shrink-0">
-              <LawIllustration lawNumber={law.number} className="w-full h-64 md:h-64 rounded-lg shadow-2xl shadow-[#d4af37]/10" />
-            </div>
-
-            {/* Number and badges */}
-            <div className="flex flex-col justify-center">
-              <div className="flex items-center gap-4 mb-4">
-                <span className="flex items-center justify-center w-16 h-16 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-2xl shadow-lg shadow-[#d4af37]/20">
-                  {law.number}
-                </span>
-                <span className={`px-4 py-1.5 rounded-full text-xs uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
-                  {categoryLabels[law.category]}
-                </span>
-              </div>
-              <p className="text-sm text-[#6b6b6b] uppercase tracking-widest">
-                Ley {law.number} de 48
-              </p>
-            </div>
+          {/* Illustration - centered */}
+          <div className="flex justify-center mb-8">
+            <LawIllustration lawNumber={law.number} className="w-48 h-48 md:w-56 md:h-56 rounded-xl shadow-2xl shadow-[#d4af37]/20" />
           </div>
 
-          {/* Title */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-[#f5f5f0] mb-6 leading-[1.1] animate-fade-in-up animate-delay-100">
+          {/* Number and category - centered */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="flex items-center justify-center w-12 h-12 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-xl shadow-lg shadow-[#d4af37]/20">
+              {law.number}
+            </span>
+            <span className={`px-3 py-1 rounded-full text-xs uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
+              {categoryLabels[law.category]}
+            </span>
+          </div>
+
+          {/* Title - centered */}
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-[#f5f5f0] mb-6 leading-[1.1] text-center animate-fade-in-up animate-delay-100">
             {law.title}
           </h1>
 
-          {/* Subtitle */}
-          <div className="relative pl-6 border-l-2 border-[#d4af37] animate-fade-in-up animate-delay-200">
-            <p className="text-xl md:text-2xl text-[#a3a3a3] italic leading-relaxed">
+          {/* Subtitle - centered */}
+          <div className="max-w-2xl mx-auto animate-fade-in-up animate-delay-200">
+            <p className="text-lg md:text-xl text-[#a3a3a3] italic leading-relaxed text-center">
               &quot;{law.subtitle}&quot;
             </p>
           </div>

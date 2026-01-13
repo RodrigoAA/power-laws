@@ -29,21 +29,20 @@ export function LawCard({ law, index }: LawCardProps) {
         {/* Illustration */}
         <div className="relative overflow-hidden">
           <LawIllustration lawNumber={law.number} className="w-full h-40 transition-transform duration-500 group-hover:scale-105" />
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#141414] to-transparent opacity-60" />
-          {/* Law number badge - positioned over illustration */}
-          <div className="absolute top-3 left-3 flex items-center gap-2">
-            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-sm shadow-lg">
-              {law.number}
-            </span>
-            <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium border backdrop-blur-sm ${categoryStyles[law.category]}`}>
-              {categoryLabels[law.category]}
-            </span>
-          </div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 p-5">
+          {/* Number and category badges */}
+          <div className="flex items-center gap-2 mb-3">
+            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37] text-[#0a0a0a] font-display font-bold text-sm">
+              {law.number}
+            </span>
+            <span className={`px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-medium border ${categoryStyles[law.category]}`}>
+              {categoryLabels[law.category]}
+            </span>
+          </div>
+
           {/* Title */}
           <h3 className="font-display text-lg font-semibold text-[#f5f5f0] mb-2 leading-tight group-hover:text-[#d4af37] transition-colors duration-300">
             {law.title}
