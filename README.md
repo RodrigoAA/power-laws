@@ -1,48 +1,34 @@
 # Las 48 Leyes del Poder - Web Interactiva
 
-Una guía visual e interactiva de las 48 Leyes del Poder de Robert Greene, inspirada en el diseño de [lawsofux.com](https://lawsofux.com/).
+Una guía visual e interactiva de las 48 Leyes del Poder de Robert Greene, con un diseño editorial de lujo y contenido enfocado en aplicaciones profesionales.
 
-## 🎯 Estado del Proyecto
+**Live:** [power-laws.vercel.app](https://power-laws.vercel.app/)
 
-**Fase Actual:** Fase 1 completada ✅
+## Estado del Proyecto
 
-### ✅ Completado (Fase 1: Fundación)
+**Completado** - Todas las funcionalidades implementadas y desplegadas.
 
-- [x] Proyecto Next.js 15+ inicializado con TypeScript
-- [x] Tailwind CSS 4 configurado con paleta de colores personalizada
-- [x] IBM Plex Sans como fuente principal
-- [x] Configuración de export estático para deployment
-- [x] Header con navegación sticky
-- [x] Footer con créditos
-- [x] Estructura de carpetas completa
-- [x] Utilidades base (cn para class merging)
+### Funcionalidades
 
-### 📋 Pendiente
+- [x] Las 48 leyes con contenido completo
+- [x] Ilustraciones SVG únicas para cada ley
+- [x] Ejemplos históricos detallados
+- [x] Aplicaciones modernas enfocadas en el ámbito profesional
+- [x] Sección "La Reversa" para cada ley
+- [x] Diseño editorial de lujo (tema oscuro con acentos dorados)
+- [x] Navegación entre leyes (anterior/siguiente)
+- [x] Categorización por tipo (Reputación, Estrategia, Engaño, Relaciones, Timing, Autodominio)
+- [x] Página "Acerca de" con información del proyecto
+- [x] SEO optimizado con metadatos dinámicos
+- [x] Sitio completamente estático (SSG)
+- [x] Desplegado en Vercel con CI/CD
 
-**Fase 2: Estructura de Datos (Siguiente)**
-- [ ] Crear tipos TypeScript (src/types/law.ts)
-- [ ] Extraer contenido de 10 leyes del PDF
-- [ ] Mapear 48 iconos Lucide
-- [ ] Implementar helper functions (getLawBySlug, etc.)
-
-**Fase 3: Homepage y Cards**
-- [ ] Componente LawCard
-- [ ] Grid responsive
-- [ ] Animaciones fade-in
-
-**Fase 4: Páginas de Detalle**
-- [ ] Ruta dinámica /laws/[slug]
-- [ ] Componentes de detalle (Hero, Takeaways, Examples, etc.)
-- [ ] Navegación prev/next
-
-**Fase 5-8:** Ver plan completo en `.claude/plans/typed-wondering-cocke.md`
-
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Prerequisitos
 
 - Node.js 18+
-- npm o yarn
+- npm
 
 ### Instalación
 
@@ -65,139 +51,109 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 npm run build
 ```
 
-Esto generará una salida estática en el directorio `out/` lista para desplegar en Vercel, Netlify, o cualquier hosting estático.
+Genera una salida estática en el directorio `out/` lista para desplegar.
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 power-laws/
 ├── src/
-│   ├── app/                    # App Router de Next.js
+│   ├── app/
 │   │   ├── layout.tsx          # Layout root con Header/Footer
-│   │   ├── page.tsx            # Homepage
-│   │   ├── globals.css         # Estilos globales
-│   │   ├── laws/[slug]/        # Páginas dinámicas (pendiente)
-│   │   └── about/              # Página About (pendiente)
+│   │   ├── page.tsx            # Homepage con grid de leyes
+│   │   ├── globals.css         # Estilos globales y animaciones
+│   │   ├── ley/[number]/       # Páginas dinámicas de cada ley
+│   │   └── about/              # Página Acerca de
 │   │
 │   ├── components/
-│   │   ├── layout/             # Header, Footer, Navigation
-│   │   ├── cards/              # LawCard, LawCardGrid (pendiente)
-│   │   ├── law-detail/         # Componentes de página individual (pendiente)
-│   │   ├── ui/                 # Componentes UI reutilizables (pendiente)
-│   │   └── seo/                # StructuredData (pendiente)
+│   │   ├── Header.tsx          # Navegación principal
+│   │   ├── Footer.tsx          # Pie de página
+│   │   ├── LawCard.tsx         # Tarjeta de ley para el grid
+│   │   └── LawIllustration.tsx # 48 ilustraciones SVG
 │   │
 │   ├── data/
-│   │   ├── laws.ts             # Datos de las 48 leyes (pendiente)
-│   │   └── law-icons.ts        # Mapeo de iconos (pendiente)
+│   │   └── laws.ts             # Datos completos de las 48 leyes
 │   │
-│   ├── types/
-│   │   └── law.ts              # Interface Law (pendiente)
-│   │
-│   ├── lib/
-│   │   ├── utils.ts            # Utilidades (cn function)
-│   │   └── laws.ts             # Helper functions (pendiente)
-│   │
-│   └── styles/
-│       └── animations.css      # Animaciones personalizadas (pendiente)
+│   └── lib/
+│       └── utils.ts            # Utilidades (cn function)
 │
-├── public/                     # Assets estáticos
+├── public/                     # Assets estáticos (favicon, icons)
 ├── next.config.ts              # Configuración Next.js (static export)
-├── tailwind.config.ts          # Configuración Tailwind (colores power-gold/navy)
 └── tsconfig.json               # Configuración TypeScript
 ```
 
-## 🎨 Sistema de Diseño
+## Sistema de Diseño
 
 ### Paleta de Colores
 
-- **Power Gold**: `#F59E0B` (500) - Color principal de acento
-- **Power Navy**: `#3B82F6` (500) - Color secundario
-- **Background**: `#FAFAF9` - Fondo claro cálido
-- **Foreground**: `#1A1A1A` - Texto principal
+- **Dorado**: `#d4af37` - Color principal de acento
+- **Background**: `#0a0a0a` - Fondo oscuro
+- **Surface**: `#141414` - Tarjetas y contenedores
+- **Border**: `#2a2a2a` - Bordes sutiles
+- **Text Primary**: `#f5f5f0` - Texto principal
+- **Text Secondary**: `#a3a3a3` - Texto secundario
 
 ### Tipografía
 
-- **Fuente**: IBM Plex Sans (400, 500, 600, 700)
-- **Headings**: Font-weight 700, tracking tight
-- **Body**: Font-weight 400, line-height 1.75
+- **Display**: Cormorant Garamond (serif) - Títulos
+- **Body**: Inter (sans-serif) - Texto general
 
-### Inspiración de Diseño
+### Categorías y Colores
 
-El diseño está inspirado en [Laws of UX](https://lawsofux.com/) con:
-- Grid limpio y responsive (3/2/1 columnas)
-- Cards con hover effects sutiles
-- Navegación sticky
-- Animaciones suaves
-- Performance-first approach
+| Categoría | Color |
+|-----------|-------|
+| Reputación | Amber |
+| Estrategia | Blue |
+| Engaño | Purple |
+| Relaciones | Emerald |
+| Timing | Rose |
+| Autodominio | Slate |
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 - **Framework**: Next.js 16.1.1 (App Router)
 - **Lenguaje**: TypeScript
 - **Estilos**: Tailwind CSS 4
-- **Iconos**: Lucide React
-- **Deployment**: Configurado para Vercel (static export)
+- **Deployment**: Vercel (static export)
+- **AI Assistant**: Claude (desarrollo asistido)
 
-## 📚 Documentación del Plan
+## Contenido
 
-El plan completo de implementación con todas las fases detalladas está en:
-```
-.claude/plans/typed-wondering-cocke.md
-```
+Cada ley incluye:
 
-Este documento incluye:
-- 8 fases de implementación detalladas
-- Estructura de datos mejorada
-- Estrategia de contenido para las 48 leyes
-- Checklists de verificación
-- Guía de deployment
+1. **Título y Subtítulo**: Nombre de la ley y cita representativa
+2. **La Ley**: Descripción completa del principio
+3. **Ejemplo Histórico**: Historia real que ilustra la ley
+4. **Aplicación Moderna**: Cómo aplicar la ley en el ámbito profesional
+5. **La Reversa**: Cuándo NO aplicar la ley o sus limitaciones
 
-## 🎯 Próximos Pasos
+### Enfoque Profesional
 
-1. **Extraer Contenido del PDF**
-   - Leer "The 48 Laws of Power" PDF
-   - Extraer las primeras 10 leyes con:
-     - Título y descripción breve
-     - 3-5 key takeaways
-     - 1-2 ejemplos históricos
-     - Transgresión
-     - Interpretación moderna
+Todas las "Aplicaciones Modernas" están orientadas al mundo laboral:
+- Negociaciones salariales y de contratos
+- Política de oficina y relaciones con superiores
+- Liderazgo y gestión de equipos
+- Presentaciones ejecutivas
+- Desarrollo de carrera
+- Networking profesional
 
-2. **Crear Estructura de Datos**
-   - Definir interface `Law` en TypeScript
-   - Mapear 48 iconos Lucide apropiados
-   - Implementar helpers (getLawBySlug, etc.)
+## Deployment
 
-3. **Desarrollar Componentes**
-   - LawCard para el grid
-   - Páginas individuales de leyes
-   - Sistema de navegación
+El proyecto está configurado para deployment automático en Vercel:
 
-## 📝 Notas de Desarrollo
+1. Push a `main` triggerea un nuevo deploy
+2. Vercel detecta Next.js automáticamente
+3. Build estático genera las 54 páginas
+4. CDN global distribuye el contenido
 
-### Configuración de Tailwind CSS 4
-
-Este proyecto usa Tailwind CSS v4 que requiere `@tailwindcss/postcss` en lugar del plugin tradicional. Ya está configurado en `postcss.config.mjs`.
-
-### Export Estático
-
-El proyecto está configurado para generar un sitio completamente estático:
-- `output: 'export'` en `next.config.ts`
-- `images.unoptimized: true` para compatibilidad
-- Todas las 48 páginas se generarán en build time
-
-### Fuentes
-
-IBM Plex Sans se carga desde Google Fonts con `display: swap` para evitar FOIT (Flash of Invisible Text).
-
-## 🤝 Contribución
-
-Este es un proyecto educativo. El contenido original pertenece a Robert Greene.
-
-## 📄 Licencia
+## Licencia
 
 MIT
 
+Este es un proyecto educativo. El contenido original de "The 48 Laws of Power" pertenece a Robert Greene y su editorial.
+
 ---
 
-**Última actualización:** 2026-01-13 - Fase 1 completada
+**Autor**: Rodrigo Avilés ([@RodrigoAviles_](https://twitter.com/RodrigoAviles_))
+
+**Última actualización**: 2026-01-13
